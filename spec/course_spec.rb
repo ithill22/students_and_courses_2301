@@ -17,9 +17,23 @@ RSpec.describe Course do
     end
   end
 
+  describe '#enroll' do
+    it 'can add a student to the students array' do
+      @course.enroll(@student1)
+      @course.enroll(@student2)
+      
+      expect(@course.students).to eq([@student1, @student2])
+    end
+  end
+
   describe '#full?' do
     it 'returns a boolean depending if a parameter is met' do
       expect(@course.full?).to be false
+
+      @course.enroll(@student1)
+      @course.enroll(@student2)
+
+      expect(@course.full?).to be true
     end
   end
 end
