@@ -11,6 +11,10 @@ RSpec.describe Gradebook do
     @student1 = Student.new({name: "Morgan", age: 21})
     @student2 = Student.new({name: "Jordan", age: 29}) 
     @student3 = Student.new({name: "Andy", age: 25})
+
+    @calculus.enroll(@student1)
+    @history.enroll(@student2)
+    @history.enroll(@student3)
     
   end
 
@@ -35,9 +39,9 @@ RSpec.describe Gradebook do
     it 'can return a hash of a course(key) with students(value)' do
       @gradebook.add_course(@calculus)
       @gradebook.add_course(@history)
-      @calculus.enroll(@student1)
-      @history.enroll(@student2)
-      @histroy.enroll(@student3)
+      # @calculus.enroll(@student1)
+      # @history.enroll(@student2)
+      # @histroy.enroll(@student3)
 
       expect(@gradebook.list_all_students).to eq({Calculus: [@student1], History: [@student2, @student3]})
     end
